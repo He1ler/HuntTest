@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d9411cc4dcc8a46aa8e17cd7570fa4, type: 3}
+  m_Name: RedFox
+  m_EditorClassIdentifier: 
+  panelAnimal: {fileID: 5511043719664042995, guid: 86f94cca7951d4d4db227af144089b1b, type: 3}
+  gameAnimal: {fileID: 8594651982741944372, guid: 6a9567632f21c6c49ac3b613f0b4d5d5, type: 3}
+  name: RedFox
+  id: 2
+  attack: 20
