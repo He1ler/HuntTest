@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEngine.ParticleSystem;
-
 public class AnimalScript : MonoBehaviour
 {
     public string name { get; private set; }
@@ -10,6 +8,7 @@ public class AnimalScript : MonoBehaviour
     public Animator animator { get; private set; }
     [SerializeField] GameObject particle;
     [HideInInspector] public UnityEvent huntEvent;
+    bool isDead = false;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -23,21 +22,26 @@ public class AnimalScript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger");
+        if(isDead)
+        {
+            return;
+        }
         if(other.gameObject.layer == 6)
         {
+            isDead = true;
             huntEvent.Invoke();
             Destroy(gameObject,1f);
             return;
         }
         if (other.gameObject.layer == 10)
         {
+            isDead = true;
             Instantiate(particle, new Vector3 (other.transform.position.x, other.transform.position.y + 0.5f, other.transform.position.z), Quaternion.identity, other.transform);
-            huntEvent.Invoke();
             if(GameManager.instance.RecieveAttack(attack))
             {
                 Destroy(other.gameObject, .25f);
             }
+            huntEvent.Invoke();
             Destroy(gameObject, 1f);
             return;
         }

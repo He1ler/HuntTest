@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
@@ -27,7 +26,7 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        lvlText.text = "lvl " + SaveLoadSystem.instance.CurrentData.lvl + 1;
+        lvlText.text = "lvl " + (SaveLoadSystem.instance.CurrentData.lvl + 1).ToString();
         if (SaveLoadSystem.instance.CurrentData.gold > 999)
         {
             gold.text = SaveLoadSystem.instance.CurrentData.gold / 1000 + "k";

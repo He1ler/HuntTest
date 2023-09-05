@@ -9,8 +9,6 @@ public class DragAndSnapObject : MonoBehaviour
     private AnimalPlacesScript animalPlacesScript = null;
     private AnimalPlacesScript nextAnimalPlacesScript = null;
     private bool isDragging = false;
-    //private bool isCollided = false;
-    //private bool isTriggered = false;
     private Vector3 offset;
     public void EnableDragAndSnapObject (AnimalSO animalSO, AnimalPlacesScript animalPlacesScript)
     {
@@ -26,7 +24,6 @@ public class DragAndSnapObject : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        Debug.Log("Up");
         MergeWith();
         SetToGridElement();
         isDragging = false;
@@ -46,9 +43,7 @@ public class DragAndSnapObject : MonoBehaviour
         {
             return;
         }
-        Debug.Log("CollisionEnter");
         dragAndSnapObject = collision.gameObject.GetComponent<DragAndSnapObject>();
-        //isCollided = true;
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -65,7 +60,6 @@ public class DragAndSnapObject : MonoBehaviour
             return;
         }
         nextAnimalPlacesScript = other.GetComponent<AnimalPlacesScript>();
-        //isTriggered = true;
     }
     private Vector3 GetMouseWorldPos()
     {
@@ -84,6 +78,8 @@ public class DragAndSnapObject : MonoBehaviour
             GameManager.instance.MergeAnimals(animalPlacesScript, dragAndSnapObject.animalPlacesScript, id);
             Destroy(dragAndSnapObject.gameObject, .1f);
             Destroy(gameObject, .1f);
+            dragAndSnapObject.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
     private void SetToGridElement()

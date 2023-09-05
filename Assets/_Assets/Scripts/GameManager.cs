@@ -1,8 +1,6 @@
 using Cinemachine;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -139,6 +137,7 @@ public class GameManager : MonoBehaviour
     }
     void RenewAnimal()
     {
+        Debug.Log(1);
         cameras[animalScriptPointer].Priority = 9;
         animalScriptPointer++;
         if (animalScriptPointer >= animalScripts.Count)
